@@ -1,0 +1,51 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+h2 {
+  font-size: clamp(28px, 5vw, 42px);
+  color: white;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+p {
+  font-size: 19px;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 40px;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
+}
+
+a {
+  display: inline-block;
+  background: white;
+  color: #667eea;
+  padding: 18px 50px;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+a:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+section {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  padding: 80px 30px;
+  text-align: center;
+  width: 100%;
+}
+
