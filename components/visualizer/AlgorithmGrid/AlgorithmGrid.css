@@ -37,6 +37,43 @@ header p {
 }
 
 .grid {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.category h2 {
+  font-size: 24px;
+  color: #18288D;
+  margin: 0 0 16px 0;
+  padding-bottom: 12px;
+  border-bottom: 3px solid rgba(102, 126, 234, 0.3);
+  font-weight: 700;
+}
+
+.subcategory {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.subcategory h3 {
+  font-size: 18px;
+  color: #2653AF;
+  margin: 0;
+  padding-left: 0;
+  font-weight: 600;
+  border-left: 4px solid #FFC13D;
+  padding-left: 12px;
+}
+
+.cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 20px;

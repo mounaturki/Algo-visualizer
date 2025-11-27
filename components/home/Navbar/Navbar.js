@@ -16,6 +16,8 @@ class AlgoNavbar extends HTMLElement {
     super();
     this.handleNavigate = this.handleNavigate.bind(this);
     this.handleAnchorClick = this.handleAnchorClick.bind(this);
+    this.handleScrollSpy = this.handleScrollSpy.bind(this);
+
     this.attachShadow({ mode: 'open' });
     this.renderPromise = templatePromise.then((template) => {
       this.shadowRoot.appendChild(template.content.cloneNode(true));
@@ -32,6 +34,11 @@ class AlgoNavbar extends HTMLElement {
       this.navLinks.forEach((link) =>
         link.addEventListener('click', this.handleAnchorClick),
       );
+
+      // ⭐ Scroll Spy actif
+      window.addEventListener('scroll', this.handleScrollSpy);
+      // first load update
+      this.handleScrollSpy();
     });
   }
 
@@ -40,6 +47,8 @@ class AlgoNavbar extends HTMLElement {
     this.navLinks.forEach((link) =>
       link.removeEventListener('click', this.handleAnchorClick),
     );
+
+    window.removeEventListener('scroll', this.handleScrollSpy);
   }
 
   handleNavigate() {
@@ -49,9 +58,11 @@ class AlgoNavbar extends HTMLElement {
   handleAnchorClick(event) {
     event.preventDefault();
     const target = event.currentTarget.dataset.target;
-    if (!target) {
-      return;
-    }
+    if (!target) return;
+
+    // ⭐ Active visuel sur clic
+    this.navLinks.forEach(link => link.classList.remove('active'));
+    event.currentTarget.classList.add('active');
 
     if (target === 'home') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -59,8 +70,7 @@ class AlgoNavbar extends HTMLElement {
     }
 
     const rootNode = this.getRootNode();
-    const scope =
-      rootNode instanceof ShadowRoot ? rootNode : document;
+    const scope = rootNode instanceof ShadowRoot ? rootNode : document;
 
     const sectionById = scope.querySelector(`#${target}`);
     if (sectionById) {
@@ -73,7 +83,46 @@ class AlgoNavbar extends HTMLElement {
     );
     sectionByData?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
+
+  // ⭐ Scroll Spy — détecte section visible
+  handleScrollSpy() {
+    const sections = [];
+
+    this.navLinks.forEach(link => {
+      const target = link.dataset.target;
+      if (!target || target === "home") return;
+
+      const section =
+        document.querySelector(`#${target}`) ||
+        document.querySelector(`[data-section="${target}"]`);
+
+      if (section) {
+        sections.push({ link, section });
+      }
+    });
+
+    let visibleLink = null;
+
+    sections.forEach(({ link, section }) => {
+      const rect = section.getBoundingClientRect();
+      const inView =
+        rect.top <= window.innerHeight * 0.35 &&
+        rect.bottom >= window.innerHeight * 0.35;
+
+      if (inView) visibleLink = link;
+    });
+
+    // Reset all
+    this.navLinks.forEach(link => link.classList.remove('active'));
+
+    if (visibleLink) {
+      visibleLink.classList.add('active');
+    } else {
+      // sinon → Accueil
+      const home = this.navLinks.find(l => l.dataset.target === "home");
+      home?.classList.add('active');
+    }
+  }
 }
 
 customElements.define('algo-navbar', AlgoNavbar);
-

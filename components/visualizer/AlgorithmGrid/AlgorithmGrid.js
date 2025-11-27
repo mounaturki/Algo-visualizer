@@ -34,9 +34,11 @@ class AlgorithmGrid extends HTMLElement {
 
   handleSelect(event) {
     const algo = event.currentTarget.dataset.algo;
-    alert(`Visualisation "${algo}" en cours de préparation ✨`);
+    
+    // Navigate to visualizer page with selected algorithm
+    const base = 'visualizer.html';
+    window.location.href = `${base}?algo=${encodeURIComponent(algo)}`;
   }
 }
 
 customElements.define('algorithm-grid', AlgorithmGrid);
-
