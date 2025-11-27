@@ -5,9 +5,9 @@ Landing page inspirée des visualiseurs d'algorithmes (ex. DSAVisualizer) réali
 ## Fonctionnalités
 
 - Navbar, sections héro/mission/FAQ/CTA, pied de page et modal de contact encapsulés dans des composants personnalisés (`<algo-navbar>`, `<algo-hero>`, etc.).
-- Architecture modulaire (HTML + CSS + JS séparés par composant).
+- Architecture modulaire (HTML + CSS + JS séparés par composant) regroupée dans `components/home`.
 - Dispatch d'événement personnalisé (`algo:open-contact`) pour orchestrer l'ouverture du modal depuis d'autres sections.
-- Préparation d'une future page “choix d'algorithmes” accessible via le bouton “Commencer”.
+- Page “Visualiser” dédiée (`visualizer.html`) avec un sélecteur d'algorithmes (tri, recherche, graphes, etc.) hébergé dans `components/visualizer`.
 
 ## Démarrage
 
@@ -15,39 +15,50 @@ Ce projet charge ses fichiers via `fetch()` et des modules ES, il doit donc êtr
 
 ```bash
 # cloner et se placer dans le dossier
-git clone https://github.com/<user>/<repo>.git
-cd web project
+git clone https://github.com/mounaturki/Algo-visualizer.git
+cd "web project"
 
-# installer un serveur simple (méthode Node.js)
+# lancer un serveur simple (Node.js)
 npx http-server -p 4173
 ```
 
 Alternative : `python -m http.server 4173` ou extension “Live Server” de VS Code.  
-Ensuite ouvrir `http://localhost:4173`.
+Ensuite ouvrir :
+
+- `http://localhost:4173/main.html` pour la landing page
+- `http://localhost:4173/visualizer.html` pour la page de sélection des algorithmes
 
 ## Architecture
 
 ```
 web project/
-├─ index.html          # bootstraps <algo-app>
-├─ main.js             # importe AppShell
+├─ main.html                 # bootstraps <algo-app>
+├─ main.js                   # importe components/home/AppShell
+├─ visualizer.html           # bootstraps <visualizer-app>
+├─ visualizer.js             # importe components/visualizer/AppShell
 └─ components/
-   ├─ AppShell/
-   ├─ Navbar/
-   ├─ HeroSection/
-   ├─ FeaturesSection/
-   ├─ MissionSection/
-   ├─ FAQSection/
-   ├─ QuestionsSection/
-   ├─ CTASection/
-   ├─ FooterSection/
-   └─ ContactModal/
-      (chaque dossier contient .html/.css/.js)
+   ├─ home/
+   │  ├─ AppShell/
+   │  ├─ Navbar/
+   │  ├─ HeroSection/
+   │  ├─ FeaturesSection/
+   │  ├─ MissionSection/
+   │  ├─ FAQSection/
+   │  ├─ QuestionsSection/
+   │  ├─ CTASection/
+   │  ├─ FooterSection/
+   │  └─ ContactModal/
+   └─ visualizer/
+      ├─ AppShell/
+      ├─ Navbar/
+      └─ AlgorithmGrid/
 ```
+
+Chaque dossier contient un trio `.html + .css + .js` chargé dynamiquement via `fetch`.
 
 ## À faire
 
-- Créer la page de sélection/visualisation des algorithmes.
+- Lier chaque bouton “Visualiser” à une véritable animation / logicielle d'algorithme.
 - Ajouter des tests ou linting automatisés si besoin.
 
 ## Licence

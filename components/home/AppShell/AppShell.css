@@ -1,0 +1,25 @@
+:host {
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(135deg, #18288D 0%, #2653AF 50%, #ECA39D 120%);
+  color: #121212;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+main > * {
+  width: 100%;
+}
+

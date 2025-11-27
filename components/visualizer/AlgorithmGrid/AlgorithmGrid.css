@@ -1,0 +1,118 @@
+:host {
+  display: block;
+  width: 100%;
+  padding: 40px 20px 80px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+section {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, rgba(255, 248, 239, 0.95), rgba(247, 252, 255, 0.95));
+  border: 1px solid rgba(12, 24, 92, 0.08);
+  border-radius: 32px;
+  padding: 40px;
+  box-shadow: 0 30px 90px rgba(24, 40, 141, 0.22);
+}
+
+header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+header h1 {
+  font-size: clamp(26px, 4vw, 46px);
+  color: #18288D;
+  margin-bottom: 12px;
+}
+
+header p {
+  color: #4a5670;
+  font-size: 17px;
+  margin: 0 auto;
+  max-width: 640px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  border: 1px solid rgba(24, 40, 141, 0.1);
+  border-radius: 24px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(38, 83, 175, 0.5);
+  box-shadow: 0 25px 60px rgba(38, 83, 175, 0.2);
+}
+
+.card h3 {
+  margin: 0;
+  color: #18288D;
+  font-size: 20px;
+}
+
+.tagline {
+  color: #5d6b82;
+  font-size: 14px;
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+li {
+  color: #4a4f5f;
+  font-size: 14px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+li::before {
+  content: '•';
+  color: #FFC13D;
+}
+
+button {
+  margin-top: auto;
+  background: linear-gradient(135deg, #FFC13D, #ECA39D);
+  border: none;
+  border-radius: 999px;
+  color: #18288D;
+  font-weight: 600;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  box-shadow: 0 15px 30px rgba(255, 193, 61, 0.35);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 30px 20px;
+  }
+}
+

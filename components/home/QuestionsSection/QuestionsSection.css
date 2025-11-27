@@ -1,0 +1,66 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+section {
+  background: white;
+  padding: 60px 30px;
+  width: 100%;
+}
+
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #fff6ea 0%, #fdebdc 100%);
+  padding: 40px 30px;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(24, 40, 141, 0.12);
+  border: 1px solid rgba(236, 163, 157, 0.35);
+  width: 100%;
+}
+
+.icon {
+  font-size: 60px;
+  margin-bottom: 25px;
+  display: block;
+}
+
+h2 {
+  font-size: clamp(24px, 5vw, 36px);
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+p {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 35px;
+  line-height: 1.8;
+}
+
+button {
+  display: inline-block;
+  background: linear-gradient(135deg, #FFC13D, #ECA39D);
+  color: #18288D;
+  padding: 15px 45px;
+  border-radius: 30px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(255, 193, 61, 0.35);
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(255, 193, 61, 0.45);
+}
+

@@ -1,2 +1,2 @@
-import './components/AppShell/AppShell.js';
+import './components/home/AppShell/AppShell.js';
 
