@@ -103,6 +103,28 @@ export const ALGORITHMS = {
     how: ['Utiliser des nœuds chaînés', 'Maintenir un pointeur head', 'Push: créer nouveau nœud', 'Pop: supprimer head'],
     steps: ['Créer liste vide', 'Initialiser head = null', 'Démontrer push/pop', 'Montrer flexibilité'],
     complexity: { best: 'O(1)', average: 'O(1)', worst: 'O(1)', space: 'O(n)' }
-  }
+  },
+  'heap-sort': {
+    title: 'Tri par Tas',
+    what: 'Construit un tas max, puis extrait les éléments un par un pour obtenir un tableau trié.',
+    how: ['Construire un tas max', 'Extraire le maximum (racine)', 'Réorganiser le tas', 'Répéter jusqu\'à vide'],
+    steps: ['Construire tas', 'Extraire max', 'Réorganiser', 'Répéter'],
+    complexity: { best: 'O(n log n)', average: 'O(n log n)', worst: 'O(n log n)', space: 'O(1)' }
+  },
+  'queue-enqueue-dequeue': {
+    title: 'File - Enqueue & Dequeue',
+    what: 'Démontre les opérations de base d\'une file: ajouter à la fin et retirer du début.',
+    how: ['Enqueue: Ajouter à la fin', 'Dequeue: Retirer du début', 'FIFO: First In First Out'],
+    steps: ['Enqueue 4 éléments', 'Observer la file grandir', 'Dequeue tous les éléments', 'Observer la file se vider'],
+    complexity: { best: 'O(1)', average: 'O(1)', worst: 'O(1)', space: 'O(n)' }
+  },
+  'linked-list-insertion': {
+    title: 'Liste Chaînée - Insertion',
+    what: 'Insère un nœud dans une liste chaînée à différentes positions.',
+    how: ['Créer nouveau nœud', 'Ajuster les pointeurs', 'Insérer au début/milieu/fin', 'Mettre à jour les liens'],
+    steps: ['Créer nœud', 'Trouver position', 'Ajuster pointeurs', 'Insérer'],
+    complexity: { best: 'O(1)', average: 'O(n)', worst: 'O(n)', space: 'O(1)' }
+  },
+  
 };
 

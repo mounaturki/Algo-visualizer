@@ -17,6 +17,9 @@ class AlgoNavbar extends HTMLElement {
     this.handleNavigate = this.handleNavigate.bind(this);
     this.handleAnchorClick = this.handleAnchorClick.bind(this);
     this.handleScrollSpy = this.handleScrollSpy.bind(this);
+    this.handleHamburgerClick = this.handleHamburgerClick.bind(this);
+    this.closeMenu = this.closeMenu.bind(this);
+    this.menuOpen = false;
 
     this.attachShadow({ mode: 'open' });
     this.renderPromise = templatePromise.then((template) => {
@@ -25,6 +28,8 @@ class AlgoNavbar extends HTMLElement {
       this.navLinks = Array.from(
         this.shadowRoot.querySelectorAll('.nav-link[data-target]'),
       );
+      this.hamburger = this.shadowRoot.querySelector('.hamburger');
+      this.navMenu = this.shadowRoot.querySelector('.nav-menu');
     });
   }
 
@@ -35,24 +40,54 @@ class AlgoNavbar extends HTMLElement {
         link.addEventListener('click', this.handleAnchorClick),
       );
 
-      // ⭐ Scroll Spy actif
+      this.hamburger?.addEventListener('click', this.handleHamburgerClick);
+      this.hamburger?.addEventListener('keydown', (e) => this.handleHamburgerKeyDown(e));
+      this.navLinks.forEach((link) =>
+        link.addEventListener('click', this.closeMenu),
+      );
+
       window.addEventListener('scroll', this.handleScrollSpy);
-      // first load update
+      window.addEventListener('resize', this.closeMenu);
       this.handleScrollSpy();
     });
   }
 
   disconnectedCallback() {
     this.cta?.removeEventListener('click', this.handleNavigate);
-    this.navLinks.forEach((link) =>
-      link.removeEventListener('click', this.handleAnchorClick),
-    );
+    this.navLinks.forEach((link) => {
+      link.removeEventListener('click', this.handleAnchorClick);
+      link.removeEventListener('click', this.closeMenu);
+    });
 
+    this.hamburger?.removeEventListener('click', this.handleHamburgerClick);
+    this.hamburger?.removeEventListener('keydown', (e) => this.handleHamburgerKeyDown(e));
     window.removeEventListener('scroll', this.handleScrollSpy);
+    window.removeEventListener('resize', this.closeMenu);
   }
 
   handleNavigate() {
+    this.closeMenu();
     window.location.href = 'visualizer.html';
+  }
+
+  handleHamburgerClick() {
+    this.menuOpen = !this.menuOpen;
+    this.hamburger?.setAttribute('aria-expanded', this.menuOpen.toString());
+    this.navMenu?.setAttribute('aria-hidden', (!this.menuOpen).toString());
+  }
+
+  handleHamburgerKeyDown(event) {
+    const key = event.key || event.keyCode;
+    if (key === 'Enter' || key === ' ' || key === 'Spacebar' || key === 13 || key === 32) {
+      event.preventDefault();
+      this.handleHamburgerClick();
+    }
+  }
+
+  closeMenu() {
+    this.menuOpen = false;
+    this.hamburger?.setAttribute('aria-expanded', 'false');
+    this.navMenu?.setAttribute('aria-hidden', 'true');
   }
 
   handleAnchorClick(event) {
@@ -60,9 +95,12 @@ class AlgoNavbar extends HTMLElement {
     const target = event.currentTarget.dataset.target;
     if (!target) return;
 
-    // ⭐ Active visuel sur clic
-    this.navLinks.forEach(link => link.classList.remove('active'));
+    this.navLinks.forEach(link => {
+      link.classList.remove('active');
+      link.removeAttribute('aria-current');
+    });
     event.currentTarget.classList.add('active');
+    event.currentTarget.setAttribute('aria-current', 'true');
 
     if (target === 'home') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -84,7 +122,6 @@ class AlgoNavbar extends HTMLElement {
     sectionByData?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
-  // ⭐ Scroll Spy — détecte section visible
   handleScrollSpy() {
     const sections = [];
 
@@ -112,15 +149,18 @@ class AlgoNavbar extends HTMLElement {
       if (inView) visibleLink = link;
     });
 
-    // Reset all
-    this.navLinks.forEach(link => link.classList.remove('active'));
+    this.navLinks.forEach(link => {
+      link.classList.remove('active');
+      link.removeAttribute('aria-current');
+    });
 
     if (visibleLink) {
       visibleLink.classList.add('active');
+      visibleLink.setAttribute('aria-current', 'true');
     } else {
-      // sinon → Accueil
       const home = this.navLinks.find(l => l.dataset.target === "home");
       home?.classList.add('active');
+      home?.setAttribute('aria-current', 'true');
     }
   }
 }

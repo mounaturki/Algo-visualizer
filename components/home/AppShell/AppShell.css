@@ -23,3 +23,26 @@ main > * {
   width: 100%;
 }
 
+/* Skip link (accessible keyboard shortcut) */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.skip-link:focus {
+  left: 12px;
+  top: 12px;
+  width: auto;
+  height: auto;
+  padding: 8px 12px;
+  background: #18288D;
+  color: #fff;
+  border-radius: 6px;
+  z-index: 2000;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+

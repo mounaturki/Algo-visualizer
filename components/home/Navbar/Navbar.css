@@ -11,18 +11,17 @@
 }
 
 nav {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  justify-content: space-between;
   padding: 18px 36px;
-  background: linear-gradient(135deg, rgba(24, 40, 141, 0.95), rgba(38, 83, 175, 0.95));
-  backdrop-filter: blur(12px);
-  box-shadow: 0 8px 30px rgba(24, 40, 141, 0.35);
+  background: linear-gradient(135deg, rgba(24, 40, 141, 0.98), rgba(38, 83, 175, 0.98));
+  backdrop-filter: blur(15px);
+  box-shadow: 0 10px 40px rgba(24, 40, 141, 0.4);
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  flex-wrap: wrap;
   gap: 16px;
   z-index: 1000;
 }
@@ -32,6 +31,7 @@ nav {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-shrink: 0;
 }
 
 .logo-img {
@@ -54,52 +54,129 @@ nav {
   letter-spacing: -0.5px;
 }
 
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 25px;
-  overflow-x: auto;
-  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .nav-link {
   font-size: 16px;
   color: #E1E8FF;
   text-decoration: none;
-  padding: 8px 18px;
-  border-radius: 8px;
-  transition: all 0.3s ease;
+  padding: 10px 16px;
+  border-radius: 12px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   font-weight: 500;
   position: relative;
   white-space: nowrap;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
-.nav-link::after {
+.nav-link::before {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 2px;
-  background: #FFC13D;
-  transition: width 0.3s ease;
+  inset: 0;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(255, 193, 61, 0.1), rgba(236, 163, 157, 0.08));
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  z-index: -1;
 }
 
-.nav-link:hover::after,
-.nav-link.active::after {
-  width: 80%;
+.nav-link:hover {
+  color: #FFC13D;
+  transform: translateY(-2px);
+}
+
+.nav-link:hover::before {
+  opacity: 1;
+}
+
+.nav-link:focus {
+  outline-color: #FFC13D;
+}
+
+/* Improved focus-visible for keyboard users */
+.nav-link:focus-visible,
+.hamburger:focus-visible,
+.btn-filled:focus-visible,
+.btn-outline:focus-visible {
+  outline: 3px solid rgba(255,193,61,0.95);
+  outline-offset: 3px;
+  box-shadow: 0 6px 18px rgba(255,193,61,0.12);
+}
+
+/* Ensure interactive elements show a visible focus ring */
+.nav-link:focus,
+.hamburger:focus,
+.btn-filled:focus,
+.btn-outline:focus {
+  outline: 3px solid rgba(255,193,61,0.95);
+  outline-offset: 3px;
 }
 
 .nav-link.active {
   color: #FFC13D;
+  background: rgba(255, 193, 61, 0.15);
+  box-shadow: 0 4px 12px rgba(255, 193, 61, 0.2);
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.hamburger:focus {
+  outline-color: #FFC13D;
+}
+
+.hamburger-line {
+  width: 24px;
+  height: 2.5px;
+  background: #FDF7F2;
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+}
+
+.hamburger[aria-expanded="true"] .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger[aria-expanded="true"] .hamburger-line:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-8px);
+}
+
+.hamburger[aria-expanded="true"] .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(8px, -8px);
 }
 
 .nav-actions {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
+  margin-left: auto;
 }
+
 
 .btn-outline,
 .btn-filled {
@@ -107,15 +184,17 @@ nav {
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
 .btn-outline {
   background: transparent;
   border: 2px solid #FFC13D;
   color: #FFC13D;
-  padding: 8px 20px;
+  padding: 10px 22px;
 }
 
 .btn-outline:hover {
@@ -125,32 +204,126 @@ nav {
   box-shadow: 0 8px 20px rgba(255, 193, 61, 0.35);
 }
 
+.btn-outline:focus {
+  outline-color: #FFC13D;
+}
+
 .btn-filled {
   background: linear-gradient(135deg, #FFC13D, #ECA39D);
   color: #18288D;
   border: none;
-  padding: 8px 20px;
-  box-shadow: 0 10px 20px rgba(236, 163, 157, 0.4);
+  padding: 10px 24px;
+  box-shadow: 0 8px 20px rgba(236, 163, 157, 0.35);
 }
 
 .btn-filled:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 30px rgba(255, 193, 61, 0.45);
+  box-shadow: 0 12px 32px rgba(255, 193, 61, 0.45);
+}
+
+.btn-filled:focus {
+  outline-color: #18288D;
 }
 
 @media (max-width: 768px) {
   nav {
-    padding: 15px 20px;
+    padding: 12px 16px;
+    flex-wrap: nowrap;
+  }
+
+  .hamburger {
+    display: flex;
+    order: 2;
+  }
+
+  .nav-logo {
+    order: 1;
+    flex: 1;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: linear-gradient(135deg, rgba(24, 40, 141, 0.99), rgba(38, 83, 175, 0.99));
+    backdrop-filter: blur(15px);
+    padding: 20px;
+    gap: 16px;
+    max-height: calc(100vh - 70px);
+    overflow-y: auto;
+    border-bottom: 1px solid rgba(255, 193, 61, 0.1);
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  .nav-menu[aria-hidden="false"] {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .nav-links {
-    gap: 15px;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+    margin: 0;
+  }
+
+  .nav-link {
+    padding: 12px 16px;
+    border-radius: 12px;
+    width: 100%;
+    text-align: left;
   }
 
   .nav-actions {
-    justify-content: center;
     width: 100%;
+    flex-direction: column;
     gap: 10px;
+    margin: 0;
+  }
+
+  .btn-filled,
+  .btn-outline {
+    width: 100%;
+    padding: 12px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  nav {
+    padding: 12px 12px;
+  }
+
+  .brand {
+    font-size: 18px;
+  }
+
+  .logo-img {
+    height: 42px;
+    width: 42px;
+    font-size: 18px;
+  }
+
+  .nav-menu {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+}
+
+
+  .nav-link {
+    font-size: 15px;
+  }
+
+  .btn-filled,
+  .btn-outline {
+    font-size: 13px;
   }
 }
 

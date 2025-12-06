@@ -25,8 +25,8 @@ npx http-server -p 4173
 Alternative : `python -m http.server 4173` ou extension “Live Server” de VS Code.  
 Ensuite ouvrir :
 
-- `http://localhost:4173/main.html` pour la landing page
-- `http://localhost:4173/visualizer.html` pour la page de sélection des algorithmes
+- `http://localhost:5100/main.html` pour la landing page
+- `http://localhost:5100/visualizer.html` pour la page de sélection des algorithmes
 
 ## Architecture
 
