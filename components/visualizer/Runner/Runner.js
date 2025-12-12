@@ -56,15 +56,11 @@ class AlgorithmRunner extends HTMLElement {
     this.canvas = this.shadowRoot.getElementById('canvas');
     const backBtn = this.shadowRoot.getElementById('back');
     const playBtn = this.shadowRoot.getElementById('play');
-    const pauseBtn = this.shadowRoot.getElementById('pause');
-    const stepBtn = this.shadowRoot.getElementById('step');
     const generateBtn = this.shadowRoot.getElementById('generate');
     const speedSlider = this.shadowRoot.getElementById('speed');
 
     backBtn.onclick = () => window.location.href = 'visualizer.html';
     playBtn.onclick = () => this.play();
-    pauseBtn.onclick = () => this.pause();
-    stepBtn.onclick = () => this.step();
     generateBtn.onclick = () => this.generateNewArray();
     speedSlider.onchange = (e) => this.speed = parseFloat(e.target.value);
 
@@ -134,15 +130,15 @@ class AlgorithmRunner extends HTMLElement {
   initializeStack() {
     this.stack = [];
     this.stackCapacity = 5;
-    this.updateStackUI(this.stack, this.stackCapacity, 'Cliquez sur Play pour commencer');
+    this.updateStackUI(this.stack, this.stackCapacity, 'Cliquez sur Démarrer pour commencer');
   }
 
   initializeQueue() {
-    this.updateQueueUI([], 6, 'Cliquez sur Play pour commencer');
+    this.updateQueueUI([], 6, 'Cliquez sur Démarrer pour commencer');
   }
 
   initializeLinkedList() {
-    this.updateLinkedListUI([], 'Cliquez sur Play pour commencer');
+    this.updateLinkedListUI([], 'Cliquez sur Démarrer pour commencer');
   }
 
   initializeTree() {
@@ -159,7 +155,7 @@ class AlgorithmRunner extends HTMLElement {
         right: { value: 7, left: null, right: null }
       }
     };
-    this.updateBinaryTreeUI(tree, 'Cliquez sur Play pour commencer');
+    this.updateBinaryTreeUI(tree, 'Cliquez sur Démarrer pour commencer');
   }
 
 
@@ -180,7 +176,7 @@ class AlgorithmRunner extends HTMLElement {
     const messageBox = document.createElement('div');
     messageBox.className = 'message-box';
     messageBox.id = 'message-box';
-    messageBox.textContent = 'Cliquez sur Play pour commencer';
+    messageBox.textContent = 'Cliquez sur Démarrer pour commencer';
 
     container.appendChild(arrayDiv);
     container.appendChild(messageBox);
@@ -245,7 +241,7 @@ class AlgorithmRunner extends HTMLElement {
     if (stack.length === 0) {
       const emptyState = document.createElement('div');
       emptyState.className = 'stack-empty-state';
-      emptyState.innerHTML = '<div style="font-size: 48px;">📭</div><div>Pile vide</div>';
+      emptyState.innerHTML = '<div style="font-size: 48px;">🔭</div><div>Pile vide</div>';
       stackDisplay.appendChild(emptyState);
     } else {
       stack.forEach((value, idx) => {
@@ -313,7 +309,7 @@ class AlgorithmRunner extends HTMLElement {
     if (queue.length === 0) {
       const emptyState = document.createElement('div');
       emptyState.className = 'queue-empty-state';
-      emptyState.innerHTML = '<div style="font-size: 48px;">📭</div><div>File vide</div>';
+      emptyState.innerHTML = '<div style="font-size: 48px;">🔭</div><div>File vide</div>';
       queueDisplay.appendChild(emptyState);
     } else {
       queue.forEach((value, idx) => {
@@ -374,7 +370,7 @@ class AlgorithmRunner extends HTMLElement {
     if (list.length === 0) {
       const emptyState = document.createElement('div');
       emptyState.className = 'linkedlist-empty-state';
-      emptyState.innerHTML = '<div style="font-size: 48px;">📭</div><div>Liste vide</div>';
+      emptyState.innerHTML = '<div style="font-size: 48px;">🔭</div><div>Liste vide</div>';
       listDisplay.appendChild(emptyState);
       } else {
       list.forEach((value, idx) => {
@@ -485,7 +481,7 @@ class AlgorithmRunner extends HTMLElement {
           
           // Colorier les arêtes vers les nœuds visités
           if (visited.has(node) && visited.has(neighbor)) {
-            line.setAttribute('stroke', '#22c55e');
+            line.setAttribute('stroke', '#FFC13D');
             line.setAttribute('stroke-width', '1');
             line.setAttribute('opacity', '0.8');
           }
@@ -507,12 +503,12 @@ class AlgorithmRunner extends HTMLElement {
       
       let fillColor = '#94a3b8'; // Non visité
       if (currentNode === node) {
-        fillColor = '#3b82f6'; // Actuel
+        fillColor = '#18288D'; // Actuel
         circle.setAttribute('r', '5.5');
       } else if (visited.has(node)) {
-        fillColor = '#22c55e'; // Visité
+        fillColor = '#FFC13D'; // Visité
       } else if (queue.includes(node)) {
-        fillColor = '#f59e0b'; // Dans la file
+        fillColor = '#ECA39D'; // Dans la file
       }
       
       circle.setAttribute('fill', fillColor);

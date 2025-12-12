@@ -1,228 +1,342 @@
 <section>
   <header>
     <h1>Choisis l'algorithme à visualiser</h1>
-    <p>Sélectionne un algorithme parmi les catégories pour voir comment il fonctionne en temps réel.</p>
+    <p>
+      Sélectionne un algorithme parmi les catégories pour voir comment il
+      fonctionne étape par étape en temps réel.
+    </p>
   </header>
 
   <div class="grid">
-    <!-- ARRAY ALGORITHMS -->
+    <!-- TABLEAUX / ARRAYS -->
     <div class="category">
-      <h2>📊 Tableaux (Arrays)</h2>
-      
+      <h2>Tableaux (Arrays)</h2>
+
       <div class="cards">
         <!-- Recherche -->
         <article class="card" data-category="search">
-          <h3>Recherche Linéaire</h3>
-          <p class="tagline">Parcours séquentiel</p>
+          <span class="badge badge-easy">Facile</span>
+          <h3>Recherche linéaire</h3>
+          <p class="tagline">Parcourt chaque élément un par un.</p>
           <ul>
             <li>Complexité : O(n)</li>
+            <li>Fonctionne sur tout type de tableau</li>
           </ul>
-          <button data-algo="linear-search">Visualiser →</button>
+          <button
+            data-algo="linear-search"
+            aria-label="Visualiser la recherche linéaire"
+          >
+            Visualiser →
+          </button>
         </article>
 
         <article class="card" data-category="search">
-          <h3>Recherche Binaire</h3>
-          <p class="tagline">Divise pour régner</p>
+          <span class="badge badge-medium">Intermédiaire</span>
+          <h3>Recherche binaire</h3>
+          <p class="tagline">Divise le tableau trié en deux à chaque étape.</p>
           <ul>
             <li>Complexité : O(log n)</li>
+            <li>Nécessite un tableau trié</li>
           </ul>
-          <button data-algo="binary-search">Visualiser →</button>
+          <button
+            data-algo="binary-search"
+            aria-label="Visualiser la recherche binaire"
+          >
+            Visualiser →
+          </button>
         </article>
 
         <!-- Tri -->
         <article class="card" data-category="sort">
-          <h3>Tri à Bulles</h3>
-          <p class="tagline">Compare adjacents</p>
+          <span class="badge badge-easy">Facile</span>
+          <h3>Tri à bulles</h3>
+          <p class="tagline">Compare et échange les éléments adjacents.</p>
           <ul>
             <li>Complexité : O(n²)</li>
+            <li>Idéal pour comprendre le tri</li>
           </ul>
-          <button data-algo="bubble-sort">Visualiser →</button>
+          <button
+            data-algo="bubble-sort"
+            aria-label="Visualiser le tri à bulles"
+          >
+            Visualiser →
+          </button>
         </article>
 
         <article class="card" data-category="sort">
-          <h3>Tri par Sélection</h3>
-          <p class="tagline">Trouve le minimum</p>
+          <span class="badge badge-easy">Facile</span>
+          <h3>Tri par sélection</h3>
+          <p class="tagline">Cherche le minimum et le place au bon endroit.</p>
           <ul>
             <li>Complexité : O(n²)</li>
+            <li>Moins d'échanges que le tri à bulles</li>
           </ul>
-          <button data-algo="selection-sort">Visualiser →</button>
+          <button
+            data-algo="selection-sort"
+            aria-label="Visualiser le tri par sélection"
+          >
+            Visualiser →
+          </button>
         </article>
 
         <article class="card" data-category="sort">
-          <h3>Tri par Insertion</h3>
-          <p class="tagline">Insère à bonne place</p>
+          <span class="badge badge-easy">Facile</span>
+          <h3>Tri par insertion</h3>
+          <p class="tagline">Insère chaque élément à la bonne position.</p>
           <ul>
             <li>Complexité : O(n²)</li>
+            <li>Efficace pour de petites listes</li>
           </ul>
-          <button data-algo="insertion-sort">Visualiser →</button>
+          <button
+            data-algo="insertion-sort"
+            aria-label="Visualiser le tri par insertion"
+          >
+            Visualiser →
+          </button>
         </article>
 
         <article class="card" data-category="sort">
-          <h3>Tri Fusion</h3>
-          <p class="tagline">Divise et conquiert</p>
+          <span class="badge badge-medium">Intermédiaire</span>
+          <h3>Tri fusion</h3>
+          <p class="tagline">Divise le tableau puis fusionne les sous-listes.</p>
           <ul>
             <li>Complexité : O(n log n)</li>
+            <li>Stable mais utilise de la mémoire en plus</li>
           </ul>
-          <button data-algo="merge-sort">Visualiser →</button>
+          <button
+            data-algo="merge-sort"
+            aria-label="Visualiser le tri fusion"
+          >
+            Visualiser →
+          </button>
         </article>
 
         <article class="card" data-category="sort">
-          <h3>Tri Rapide</h3>
-          <p class="tagline">Pivot partitionnement</p>
+          <span class="badge badge-medium">Intermédiaire</span>
+          <h3>Tri rapide</h3>
+          <p class="tagline">Choisit un pivot et partitionne le tableau.</p>
           <ul>
-            <li>Complexité : O(n log n)</li>
+            <li>Complexité moyenne : O(n log n)</li>
+            <li>Très utilisé en pratique</li>
           </ul>
-          <button data-algo="quick-sort">Visualiser →</button>
+          <button
+            data-algo="quick-sort"
+            aria-label="Visualiser le tri rapide"
+          >
+            Visualiser →
+          </button>
         </article>
 
         <article class="card" data-category="sort">
-          <h3>Tri par Tas</h3>
-          <p class="tagline">Heap sort</p>
+          <span class="badge badge-hard">Avancé</span>
+          <h3>Tri par tas</h3>
+          <p class="tagline">S'appuie sur une structure de tas binaire.</p>
           <ul>
             <li>Complexité : O(n log n)</li>
+            <li>Ne nécessite pas de mémoire supplémentaire</li>
           </ul>
-          <button data-algo="heap-sort">Visualiser →</button>
+          <button
+            data-algo="heap-sort"
+            aria-label="Visualiser le tri par tas"
+          >
+            Visualiser →
+          </button>
         </article>
       </div>
     </div>
 
-    <!-- STACK ALGORITHMS -->
+    <!-- STACK / PILE -->
     <div class="category">
-      <h2>📚 Stack (Pile)</h2>
-      
-      <!-- Operations -->
+      <h2>Pile (Stack)</h2>
+
+      <!-- Opérations -->
       <div class="subcategory">
-        <h3>Operations</h3>
+        <h3>Opérations de base</h3>
         <div class="cards">
           <article class="card" data-category="stack">
-            <h3>Push & Pop</h3>
-            <p class="tagline">Ajouter et retirer</p>
+            <span class="badge badge-easy">Facile</span>
+            <h3>Push &amp; Pop</h3>
+            <p class="tagline">Ajouter et retirer des éléments (LIFO).</p>
             <ul>
               <li>Complexité : O(1)</li>
-              <li>LIFO</li>
+              <li>Utilisé pour l'historique, annuler/rétablir, etc.</li>
             </ul>
-            <button data-algo="stack-push-pop">Visualiser →</button>
+            <button
+              data-algo="stack-push-pop"
+              aria-label="Visualiser push et pop"
+            >
+              Visualiser →
+            </button>
           </article>
 
           <article class="card" data-category="stack">
+            <span class="badge badge-easy">Facile</span>
             <h3>Peek</h3>
-            <p class="tagline">Consulter le sommet</p>
+            <p class="tagline">Consulter l'élément au sommet.</p>
             <ul>
               <li>Complexité : O(1)</li>
-              <li>Sans modification</li>
+              <li>Ne modifie pas la pile</li>
             </ul>
-            <button data-algo="stack-peek">Visualiser →</button>
+            <button data-algo="stack-peek" aria-label="Visualiser peek">
+              Visualiser →
+            </button>
           </article>
 
           <article class="card" data-category="stack">
+            <span class="badge badge-easy">Facile</span>
             <h3>Is Empty</h3>
-            <p class="tagline">Vérifier si vide</p>
+            <p class="tagline">Vérifier si la pile est vide.</p>
             <ul>
               <li>Complexité : O(1)</li>
-              <li>Contrôle d'état</li>
+              <li>Utile pour sécuriser les opérations</li>
             </ul>
-            <button data-algo="stack-is-empty">Visualiser →</button>
+            <button
+              data-algo="stack-is-empty"
+              aria-label="Visualiser is empty"
+            >
+              Visualiser →
+            </button>
           </article>
 
           <article class="card" data-category="stack">
+            <span class="badge badge-easy">Facile</span>
             <h3>Is Full</h3>
-            <p class="tagline">Vérifier si plein</p>
+            <p class="tagline">Vérifier si la pile est pleine.</p>
             <ul>
               <li>Complexité : O(1)</li>
-              <li>Capacité limitée</li>
+              <li>Concerné par les piles de capacité fixe</li>
             </ul>
-            <button data-algo="stack-is-full">Visualiser →</button>
+            <button
+              data-algo="stack-is-full"
+              aria-label="Visualiser is full"
+            >
+              Visualiser →
+            </button>
           </article>
         </div>
       </div>
 
       <!-- Polish Notations Evaluation -->
       <div class="subcategory">
-        <h3>Polish Notations Evaluation</h3>
+        <h3>Évaluation de notations polonaises</h3>
         <div class="cards">
           <article class="card" data-category="stack">
+            <span class="badge badge-medium">Intermédiaire</span>
             <h3>Postfix</h3>
-            <p class="tagline">Notation RPN</p>
+            <p class="tagline">Notation polonaise inversée (RPN).</p>
             <ul>
               <li>Complexité : O(n)</li>
-              <li>Polonaise inversée</li>
+              <li>Pas besoin de parenthèses</li>
             </ul>
-            <button data-algo="stack-postfix">Visualiser →</button>
+            <button
+              data-algo="stack-postfix"
+              aria-label="Visualiser la notation postfix"
+            >
+              Visualiser →
+            </button>
           </article>
 
           <article class="card" data-category="stack">
+            <span class="badge badge-medium">Intermédiaire</span>
             <h3>Prefix</h3>
-            <p class="tagline">Notation préfixe</p>
+            <p class="tagline">Notation polonaise préfixe.</p>
             <ul>
               <li>Complexité : O(n)</li>
-              <li>Polonaise</li>
+              <li>Utilise intensivement la pile</li>
             </ul>
-            <button data-algo="stack-prefix">Visualiser →</button>
+            <button
+              data-algo="stack-prefix"
+              aria-label="Visualiser la notation prefix"
+            >
+              Visualiser →
+            </button>
           </article>
         </div>
       </div>
 
-      <!-- Implementation -->
+      <!-- Implémentations -->
       <div class="subcategory">
-        <h3>Implementation</h3>
+        <h3>Implémentation d'une pile</h3>
         <div class="cards">
           <article class="card" data-category="stack">
-            <h3>Using Array</h3>
-            <p class="tagline">Tableau statique</p>
+            <span class="badge badge-easy">Facile</span>
+            <h3>Avec tableau</h3>
+            <p class="tagline">Implémentation par tableau statique.</p>
             <ul>
-              <li>Accès rapide O(1)</li>
-              <li>Taille fixe</li>
+              <li>Accès très rapide O(1)</li>
+              <li>Taille fixe définie à l'avance</li>
             </ul>
-            <button data-algo="stack-array">Visualiser →</button>
+            <button
+              data-algo="stack-array"
+              aria-label="Visualiser pile avec tableau"
+            >
+              Visualiser →
+            </button>
           </article>
 
           <article class="card" data-category="stack">
-            <h3>Using Linked List</h3>
-            <p class="tagline">Liste chaînée</p>
+            <span class="badge badge-medium">Intermédiaire</span>
+            <h3>Avec liste chaînée</h3>
+            <p class="tagline">Implémentation dynamique avec nœuds.</p>
             <ul>
               <li>Taille dynamique</li>
-              <li>Flexible</li>
+              <li>Plus flexible mais un peu plus complexe</li>
             </ul>
-            <button data-algo="stack-linked-list">Visualiser →</button>
+            <button
+              data-algo="stack-linked-list"
+              aria-label="Visualiser pile avec liste chaînée"
+            >
+              Visualiser →
+            </button>
           </article>
         </div>
       </div>
     </div>
 
-    <!-- QUEUE ALGORITHMS -->
+    <!-- QUEUE / FILE -->
     <div class="category">
-      <h2>🔄 Queue (File)</h2>
-      
+      <h2>File (Queue)</h2>
+
       <div class="cards">
         <article class="card" data-category="queue">
-          <h3>Enqueue & Dequeue</h3>
-          <p class="tagline">Ajouter et retirer</p>
+          <span class="badge badge-easy">Facile</span>
+          <h3>Enqueue &amp; Dequeue</h3>
+          <p class="tagline">Ajouter et retirer dans l'ordre FIFO.</p>
           <ul>
             <li>Complexité : O(1)</li>
-            <li>FIFO</li>
+            <li>Modélise une file d'attente classique</li>
           </ul>
-          <button data-algo="queue-enqueue-dequeue">Visualiser →</button>
+          <button
+            data-algo="queue-enqueue-dequeue"
+            aria-label="Visualiser enqueue et dequeue"
+          >
+            Visualiser →
+          </button>
         </article>
       </div>
     </div>
 
-    <!-- LINKED LIST ALGORITHMS -->
+    <!-- LISTE CHAÎNÉE -->
     <div class="category">
-      <h2>🔗 Linked List (Liste Chaînée)</h2>
-      
+      <h2>Liste chaînée (Linked List)</h2>
+
       <div class="cards">
         <article class="card" data-category="linkedlist">
+          <span class="badge badge-medium">Intermédiaire</span>
           <h3>Insertion</h3>
-          <p class="tagline">Insérer des nœuds</p>
+          <p class="tagline">Insérer des nœuds dans la liste.</p>
           <ul>
             <li>Complexité : O(1) à O(n)</li>
-            <li>Début/milieu/fin</li>
+            <li>Insertion au début, au milieu ou à la fin</li>
           </ul>
-          <button data-algo="linked-list-insertion">Visualiser →</button>
+          <button
+            data-algo="linked-list-insertion"
+            aria-label="Visualiser l'insertion en liste chaînée"
+          >
+            Visualiser →
+          </button>
         </article>
       </div>
     </div>
-
-    <!-- TREE ALGORITHMS (removed) -->
   </div>
 </section>

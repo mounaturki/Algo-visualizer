@@ -2,7 +2,7 @@
   display: block;
   width: 100%;
   min-height: 100vh;
-  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
   background: linear-gradient(135deg, #18288D 0%, #2653AF 50%, #ECA39D 120%);
   color: #121212;
   line-height: 1.6;

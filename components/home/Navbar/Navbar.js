@@ -30,6 +30,7 @@ class AlgoNavbar extends HTMLElement {
       );
       this.hamburger = this.shadowRoot.querySelector('.hamburger');
       this.navMenu = this.shadowRoot.querySelector('.nav-menu');
+      console.log('Theme toggle element:', this.themeToggle);
     });
   }
 

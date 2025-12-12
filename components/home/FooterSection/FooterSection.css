@@ -3,16 +3,148 @@
   width: 100%;
 }
 
+/* BACKGROUND */
 footer {
-  background: #1a1a2e;
-  color: rgba(255, 255, 255, 0.7);
-  padding: 40px 30px;
-  text-align: center;
+  background: #060c35; /* Bleu foncé */
+  color: rgba(255, 255, 255, 0.85);
   width: 100%;
+  padding: 60px 30px 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.10);
 }
 
-p {
-  margin: 0;
+.footer-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+/* BRAND */
+.brand {
+  font-size: 26px;
+  font-weight: 700;
+  color: #FFC13D; /* Jaune */
+  margin-bottom: 10px;
+}
+
+.brand span {
+  color: #ECA39D; /* Rose pastel */
+}
+
+.description {
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
+
+.credit {
+  margin: 10px 0 20px;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contact a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+}
+
+.contact a:hover {
+  color: #FFC13D; /* Jaune highlight */
+}
+
+/* TITLES */
+h3 {
   font-size: 15px;
+  margin-bottom: 15px;
+  color: #FFC13D; /* Jaune */
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
+/* LISTS */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  margin: 8px 0;
+}
+
+ul li a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.70);
+  transition: color 0.3s;
+}
+
+ul li a:hover {
+  color: #2653AF; /* Bleu moyen */
+}
+
+/* SOCIAL ICONS */
+.social-icons {
+  display: flex;
+  gap: 12px;
+}
+
+.social-icons a {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #FFC13D; /* Jaune */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #18288D; /* Bleu foncé texte */
+  text-decoration: none;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.social-icons a:hover {
+  background: #2653AF; /* Bleu moyen */
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* BOTTOM */
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.55);
+  border-top: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .contact {
+    justify-content: center;
+  }
+}

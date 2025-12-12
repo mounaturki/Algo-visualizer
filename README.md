@@ -19,14 +19,18 @@ git clone https://github.com/mounaturki/Algo-visualizer.git
 cd "web project"
 
 # lancer un serveur simple (Node.js)
-npx http-server -p 4173
+npx http-server -p 5100
 ```
 
-Alternative : `python -m http.server 4173` ou extension “Live Server” de VS Code.  
+Alternative : `python -m http.server 5100` ou extension “Live Server” de VS Code.  
 Ensuite ouvrir :
 
 - `http://localhost:5100/main.html` pour la landing page
 - `http://localhost:5100/visualizer.html` pour la page de sélection des algorithmes
+
+## Déploiement
+
+Le projet est déployé sur GitHub Pages : [https://mounaturki.github.io/Algo-visualizer/main.html](https://mounaturki.github.io/Algo-visualizer/main.html)
 
 ## Architecture
 

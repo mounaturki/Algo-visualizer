@@ -17,12 +17,8 @@
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .modal-content {
@@ -30,9 +26,10 @@
   border-radius: 20px;
   max-width: 500px;
   width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   animation: slideUp 0.3s ease;
-  overflow: hidden;
 }
 
 @keyframes slideUp {
@@ -49,7 +46,7 @@
 .modal-header {
   background: linear-gradient(135deg, #18288D, #2653AF);
   color: #fdf7f2;
-  padding: 25px 30px;
+  padding: 25px 35px;
   border-radius: 20px 20px 0 0;
   display: flex;
   justify-content: space-between;
@@ -81,12 +78,18 @@
   transform: scale(1.2);
 }
 
+/* FORMULAIRE */
 form {
-  padding: 30px;
+  padding: 30px 35px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .form-group {
   margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 label {
@@ -107,6 +110,7 @@ textarea {
   font-size: 15px;
   font-family: inherit;
   transition: all 0.3s ease;
+  box-sizing: border-box;
 }
 
 input:focus,
@@ -122,6 +126,19 @@ textarea {
   min-height: 120px;
 }
 
+.error-message {
+  display: block;
+  color: #e74c3c;
+  font-size: 13px;
+  margin-top: 5px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.error-message.show {
+  opacity: 1;
+}
+
 button[type='submit'] {
   width: 100%;
   background: linear-gradient(135deg, #FFC13D, #ECA39D);
@@ -134,21 +151,123 @@ button[type='submit'] {
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 5px 20px rgba(255, 193, 61, 0.3);
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
-button[type='submit']:hover {
+button[type='submit']:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(255, 193, 61, 0.45);
+}
+
+button[type='submit']:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-text,
+.btn-loading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-loading svg {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.form-message {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.form-message.success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.form-message.error {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* POPUP DE SUCCÈS */
+.success-popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 3000;
+  align-items: center;
+  justify-content: center;
+}
+
+.success-popup.active {
+  display: flex;
+}
+
+.success-popup-content {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px 24px;
+  max-width: 320px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.success-popup-content h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #18288D;
+}
+
+.success-popup-close {
+  margin-top: 15px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #18288D;
+  color: #fff;
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {
   .modal-content {
     width: 95%;
-    max-width: 450px;
+    max-width: 420px;
+    margin: 20px;
   }
 
   form {
-    padding: 20px;
+    padding: 20px 25px;
+  }
+
+  input,
+  select,
+  textarea {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  button[type='submit'] {
+    padding: 12px;
+    font-size: 15px;
   }
 }
-
